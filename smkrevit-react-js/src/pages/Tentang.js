@@ -3,7 +3,9 @@ function Tentang() {
       <div className="App">
         <h1>Tentang Kami</h1>
         <p>Kami adalah channel pembelajaran Pemrograman</p>
-      </div>
+        <button type="button" class="btn btn-primary" >Button</button>
+        <button type="button" class="btn btn-success" >Button</button>
+     </div>
     );
   }
   

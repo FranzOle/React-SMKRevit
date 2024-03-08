@@ -1,6 +1,5 @@
 const css = {
     color:"Red",
-    background:"red",
     fontSize:20
 }
 
