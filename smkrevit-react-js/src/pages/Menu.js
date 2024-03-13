@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Table from "./Table";
 
 function Menu() {
     const [menus, setMenu] = useState([
@@ -48,27 +49,7 @@ function Menu() {
 
     return (
       <div className="App">
-        <p>Menu</p>
-        <div>
-        <table className="table border">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Menu</th>
-                            <th>Gambar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {menus.map((data) => (
-                            <tr key={data.idmenu}>
-                                <td>{data.idmenu}</td>
-                                <td>{data.menu}</td>
-                                <td>{data.harga}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-        </div>
+         <Table menu={menus} />
       </div>
     );
   }
