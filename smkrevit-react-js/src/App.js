@@ -9,6 +9,8 @@ import { BrowserRouter,
   Routes, 
   Route } from "react-router-dom";
 import Siswa from './pages/Siswa'; 
+import Menu from './pages/Menu'; 
+
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
           <Route path='/kontak' element={<Kontak/>}/>
           <Route path='/tentang' element={<Tentang/>}/>
           <Route path='/siswa' element={<Siswa/>}/>
+          <Route path='/menu' element={<Menu/>}/>
         </Routes>
       </div>
     </BrowserRouter>
