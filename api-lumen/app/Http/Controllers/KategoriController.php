@@ -27,7 +27,11 @@ class KategoriController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
-    {
+    {   
+        $this->validate($request, [
+            'kategori' => 'required|unique:kategoris',
+            'keterangan' => 'required',
+        ]);
         Kategori::create($request->all());
         return response()->json("Data berhasil dimasukkan");
     }

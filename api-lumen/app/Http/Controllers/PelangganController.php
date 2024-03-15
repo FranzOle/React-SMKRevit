@@ -25,7 +25,13 @@ class PelangganController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
-    {
+    {  
+         
+        $this->validate($request, [
+            'pelanggan' => 'required|unique:pelanggans',
+            'alamat' => 'required',
+            'telp' => 'required|numeric|unique:pelanggans',
+        ]);
         Pelanggan::create($request->all());
         return response()->json("Data berhasil dimasukkan");
     }
