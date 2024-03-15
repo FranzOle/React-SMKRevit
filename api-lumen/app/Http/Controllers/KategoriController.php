@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use Illuminate\Http\Request;
-
+use Illuminate\Http\JsonResponse;
 class KategoriController extends Controller
 {
     /**
@@ -16,7 +16,9 @@ class KategoriController extends Controller
     {
         //
         // echo '<h1>Ini adalah index</h1>';
-        return response()->json("Ini index");
+        $data = Kategori::all();
+
+        return response()->json($data);
     }
 
     /**
@@ -47,10 +49,11 @@ class KategoriController extends Controller
      * @param  \App\Models\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function show(Kategori $kategori)
+    public function show($id)
     {
-        //
-        return response()->json("menampilkan 1 data");
+        $data = Kategori::where('idkategori', $id)->get();
+
+        return response()->json($data);
     }
 
     /**
