@@ -86,9 +86,10 @@ class KategoriController extends Controller
      * @param  \App\Models\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kategori $kategori)
+    public function destroy($id)
     {
-        //
-        return response()->json("ini delete $kategori");
+        Kategori::where('idkategori', $id)->delete();
+
+        return response()->json("Menghapus kategori dengan id $id");
     }
 }
