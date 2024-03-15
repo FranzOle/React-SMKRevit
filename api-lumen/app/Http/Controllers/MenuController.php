@@ -25,10 +25,26 @@ class MenuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
-    {
+    {   
+        $this->validate($request, [
+            'idkategori' => 'required|numeric',
+            'menu' => 'required',
+            'gambar' => 'required|max:2048',
+            'harga' => 'required|numeric',
+        ]);
+
         $gambar = $request->file('gambar')->getClientOriginalName();
         $request->file('gambar')->move('upload', $gambar);
-        return response()->json($gambar);
+
+        $data = [
+            'idkategori' => $request->input('idkategori'),
+            'menu' => $request->input('menu'),
+            'gambar' => url('upload/', $gambar),
+            'harga' => $request->input('harga'),
+        ];
+        $menu = Menu::create($data);
+
+        return response()->json($data);
         
     }
 
