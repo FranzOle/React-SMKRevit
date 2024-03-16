@@ -18,7 +18,10 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => 'api'], function() use($router) {
+$router->post('api/register', ['uses' => 'LoginController@register']);
+$router->post('api/login', ['uses' => 'LoginController@login']);
+
+$router->group( ['prefix' => 'api', 'middleware' => 'auth'], function() use ($router) {
     $router -> get('kategori' , ['uses' => 'KategoriController@index'] );
     $router -> get('kategori/{id}' , ['uses' => 'KategoriController@show'] );
     $router -> delete('kategori/{id}' , ['uses' => 'KategoriController@destroy'] );
@@ -36,5 +39,7 @@ $router->group(['prefix' => 'api'], function() use($router) {
     $router->post('menu', ['uses' => 'MenuController@create']);
     $router->put('menu/{id}', ['uses' => 'MenuController@update']);
     $router->delete('menu/{id}', ['uses' => 'MenuController@destroy']);
+
+
 });
 
