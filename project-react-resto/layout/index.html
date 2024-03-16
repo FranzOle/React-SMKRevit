@@ -94,8 +94,23 @@
                 document.querySelector('#out').innerHTML = tampil;
             });
         }
+        
+        function post() {
+            let data = {
+                pelanggan : 'mr tukam',
+                alamat : 'Jl. ngawi',
+                telp : '1234'
+            }
+            link.post('pelanggan', data).then(res=>{
+                console.log(res)
+                let tampil = `<h1>${res.data.pesan}</h1>`
+
+                document.querySelector('#out').innerHTML = tampil;
+            });
+        }
         document.querySelector("#get").addEventListener('click', get);
         document.querySelector("#show").addEventListener('click', show);
+        document.querySelector("#post").addEventListener('click', post);
     </script>
 </body>
 </html>
