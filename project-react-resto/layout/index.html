@@ -102,15 +102,29 @@
                 telp : '1234'
             }
             link.post('pelanggan', data).then(res=>{
-                console.log(res)
-                let tampil = `<h1>${res.data.pesan}</h1>`
+                console.log(res);
+                let tampil = `<h1>${res.data.pesan}</h1>`;
 
                 document.querySelector('#out').innerHTML = tampil;
             });
         }
+
+        function del(){
+            let id = 20;
+
+            link.delete("pelanggan/" + id).then(res=>{
+                console.log(res)
+                let tampil = `<h1>${res.data.pesan}</h1>`;
+
+                document.querySelector('#out').innerHTML = tampil;
+            });
+
+        }
         document.querySelector("#get").addEventListener('click', get);
         document.querySelector("#show").addEventListener('click', show);
         document.querySelector("#post").addEventListener('click', post);
+        document.querySelector("#del").addEventListener('click', del);
+
     </script>
 </body>
 </html>

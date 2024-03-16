@@ -101,8 +101,13 @@ class PelangganController extends Controller
      */
     public function destroy($id)
     {
-        Pelanggan::where('idpelanggan', $id)->delete();
+        $pelanggan = Pelanggan::where('idpelanggan', $id)->delete();
 
-        return response()->json("Menghapus pelanggan dengan id $id");
+        if ($pelanggan) {
+            return response()->json([
+                'pesan' => "Data pelanggan dengan id $id berhasil dihapus",
+                'data' => $pelanggan
+            ], 200);
+        }
     }
 }
