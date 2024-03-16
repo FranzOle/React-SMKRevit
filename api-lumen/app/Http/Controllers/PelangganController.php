@@ -88,9 +88,13 @@ class PelangganController extends Controller
     public function update(Request $request, $id)
     {
         //
-        Pelanggan::where('idpelanggan', $id)->update($request->all());
-
-        return response()->json("Mengupdate pelanggan dengan id $id");  
+        $update = Pelanggan::where('idpelanggan', $id)->update($request->all());
+        if ($update) {
+            return response()->json([
+                'pesan' => "Mengupdate pelanggan dengan id $id",
+                'data' => $update
+            ], 201);  
+        }
     }
 
     /**
