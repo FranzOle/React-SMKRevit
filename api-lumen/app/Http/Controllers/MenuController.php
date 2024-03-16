@@ -16,7 +16,7 @@ class MenuController extends Controller
     {
         $data = Menu::all();
 
-        return response()->json($data);
+        return response()->json($data, 200);
     }
 
     /**
@@ -28,7 +28,7 @@ class MenuController extends Controller
     {   
         $this->validate($request, [
             'idkategori' => 'required|numeric',
-            'menu' => 'required',
+            'menu' => 'required|unique:menus',
             'gambar' => 'required|max:2048',
             'harga' => 'required|numeric',
         ]);
@@ -44,7 +44,21 @@ class MenuController extends Controller
         ];
         $menu = Menu::create($data);
 
-        return response()->json($data);
+        if ($menu) {
+            $result = [
+                // 'status' => 201,
+                'pesan' => 'Data menu berhasil ditambahkan',
+                'data' => $data
+            ];
+        } else {
+            $result = [
+                // 'status' => 400,
+                'pesan' => 'Data menu tidak bisa ditambahkan',
+                'data' => '',
+            ];
+        }
+
+        return response()->json($result, 200);
         
     }
 
