@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-export default function Nav() {
+function Nav() {
   return (
     <div>
-        <h1>Navigasi</h1>
+      <h2>Dashboard</h2>
     </div>
   )
 }
+
+export default Nav
